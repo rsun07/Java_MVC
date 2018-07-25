@@ -11,6 +11,7 @@
 
     <modules>
         <module>jersey-jetty</module>
+        <module>springmvc</module>
     </modules>
 
     <properties>
