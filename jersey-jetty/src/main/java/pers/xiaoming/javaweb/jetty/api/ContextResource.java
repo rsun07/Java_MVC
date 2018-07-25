@@ -11,11 +11,10 @@ import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.Response;
 
 @Slf4j
-@Path("/jetty/hello_world")
+@Path("/jetty/context")
 public class ContextResource {
 
     @GET
-    @Path("/request_class")
     @Produces("text/plain")
     public Response get(
             @Context HttpHeaders headers,
