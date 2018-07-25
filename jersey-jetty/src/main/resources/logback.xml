@@ -12,9 +12,6 @@
     <logger name="pers.xiaoming.javaweb" level="INFO"/>
     <logger name="org.eclipse.jetty" level="ERROR"/>
 
-    <root level="ERROR">
-        <appender-ref ref="STDOUT" />
-    </root>
     <root level="INFO">
         <appender-ref ref="STDOUT" />
     </root>
