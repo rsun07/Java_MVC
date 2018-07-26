@@ -5,6 +5,4 @@
 
     <!--Register Controller-->
     <bean id="/my.do" class="pers.xiaoming.javaweb.springmvc.MyController"/>
-
-
 </beans>

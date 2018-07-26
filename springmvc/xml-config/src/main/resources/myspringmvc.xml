@@ -7,13 +7,19 @@
     <bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
         <property name="mappings">
             <props>
-                <prop key="/controller.do">MyConTroller</prop>
-                <prop key="/mycontroller.do">MyConTroller</prop>
-                <prop key="/simplecontroller.do">MyConTroller</prop>
+                <prop key="/controller.do">MyController</prop>
+                <prop key="/mycontroller.do">MyController</prop>
+                <prop key="/simplecontroller.do">MyController</prop>
             </props>
         </property>
     </bean>
 
     <!--Register Controller-->
-    <bean id="MyConTroller" class="pers.xiaoming.javaweb.springmvc.MyController"/>
+    <bean id="MyController" class="pers.xiaoming.javaweb.springmvc.MyController"/>
+
+    <!--Register HandlerMapping-->
+    <bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"/>
+
+    <!--Register http handler-->
+    <bean id="/httphandler.do" class="pers.xiaoming.javaweb.springmvc.MyHttpHandler"/>
 </beans>

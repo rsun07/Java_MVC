@@ -15,7 +15,7 @@ public class MyController implements Controller {
         modelAndView.addObject("msg", "Hello Spring MVC world");
         modelAndView.setViewName("springmvc-config.html");
 
-        log.info("request is {}", httpServletRequest.toString());
+        log.info("Executing MyController request is {}", httpServletRequest.toString());
 
         return null;
     }
