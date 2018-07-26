@@ -3,8 +3,17 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+    <!--Register HandlerMapping-->
+    <bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="mappings">
+            <props>
+                <prop key="/controller.do">MyConTroller</prop>
+                <prop key="/mycontroller.do">MyConTroller</prop>
+                <prop key="/simplecontroller.do">MyConTroller</prop>
+            </props>
+        </property>
+    </bean>
+
     <!--Register Controller-->
-    <bean id="/my.do" class="pers.xiaoming.javaweb.springmvc.MyController"/>
-
-
+    <bean id="MyConTroller" class="pers.xiaoming.javaweb.springmvc.MyController"/>
 </beans>
