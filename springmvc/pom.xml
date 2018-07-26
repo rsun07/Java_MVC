@@ -15,6 +15,7 @@
 
   <modules>
     <module>hello-world</module>
+    <module>xml-config</module>
   </modules>
 
   <properties>
