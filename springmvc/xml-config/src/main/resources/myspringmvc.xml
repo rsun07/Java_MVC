@@ -27,4 +27,19 @@
         <!--AbstractController extends WebContentGenerator-->
         <property name="supportedMethods" value="GET"/>
     </bean>
+
+    <bean id="propertiesMethodNameResolver"
+            class="org.springframework.web.servlet.mvc.multiaction.PropertiesMethodNameResolver">
+        <property name="mappings">
+            <props>
+                <prop key="/multi_default.do">doFirst</prop>
+                <prop key="/multi_doFirst.do">doFirst</prop>
+                <prop key="/multi_doSecond.do">doSecond</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="MyMultiActionController" class="pers.xiaoming.javaweb.springmvc.MyMultiActionController">
+        <property name="methodNameResolver" ref="propertiesMethodNameResolver"/>
+    </bean>
 </beans>
