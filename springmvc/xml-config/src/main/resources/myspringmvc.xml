@@ -22,4 +22,9 @@
 
     <!--Register http handler-->
     <bean id="/httphandler.do" class="pers.xiaoming.javaweb.springmvc.MyHttpHandler"/>
+
+    <bean id="abstractcontroller.do" class="pers.xiaoming.javaweb.springmvc.MyAbstractControllerImpl">
+        <!--AbstractController extends WebContentGenerator-->
+        <property name="supportedMethods" value="GET"/>
+    </bean>
 </beans>
