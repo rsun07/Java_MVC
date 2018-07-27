@@ -7,9 +7,12 @@
     <bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
         <property name="mappings">
             <props>
+                <prop key="/">MyController</prop>
                 <prop key="/controller.do">MyController</prop>
                 <prop key="/mycontroller.do">MyController</prop>
                 <prop key="/simplecontroller.do">MyController</prop>
+
+                <prop key="/multi_*.do">MyMultiActionController</prop>
             </props>
         </property>
     </bean>
@@ -23,11 +26,12 @@
     <!--Register http handler-->
     <bean id="/httphandler.do" class="pers.xiaoming.javaweb.springmvc.MyHttpHandler"/>
 
-    <bean id="abstractcontroller.do" class="pers.xiaoming.javaweb.springmvc.MyAbstractControllerImpl">
+    <bean id="/abstractcontroller.do" class="pers.xiaoming.javaweb.springmvc.MyAbstractControllerImpl">
         <!--AbstractController extends WebContentGenerator-->
         <property name="supportedMethods" value="GET"/>
     </bean>
 
+    <!--Define method name resolver for multi action controller-->
     <bean id="propertiesMethodNameResolver"
             class="org.springframework.web.servlet.mvc.multiaction.PropertiesMethodNameResolver">
         <property name="mappings">
