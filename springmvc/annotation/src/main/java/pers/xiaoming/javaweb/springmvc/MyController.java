@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -27,6 +28,25 @@ public class MyController {
 
 
         log.info("Executing MyController doFirst, request is {}", httpServletRequest.toString());
+
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/register.do", method = RequestMethod.POST)
+    public ModelAndView register(
+            // here parameter should be provided as Query parameter
+            @RequestParam("user_name") String name,
+            @RequestParam(value = "age", defaultValue = "0") int age
+    ) throws Exception {
+
+        ModelAndView modelAndView = new ModelAndView();
+
+        modelAndView.addObject("name", name);
+        modelAndView.addObject("age", age);
+        modelAndView.setView(new RegisterView());
+
+
+        log.info("Executing MyController register, name is {}, age is {}", name, age);
 
         return modelAndView;
     }
