@@ -1,9 +1,11 @@
-package pers.xiaoming.javaweb.springmvc;
+package pers.xiaoming.javaweb.springmvc.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.Controller;
 import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
+import pers.xiaoming.javaweb.springmvc.exception.AgeException;
+import pers.xiaoming.javaweb.springmvc.exception.NameException;
+import pers.xiaoming.javaweb.springmvc.view.RegisterView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -26,6 +28,31 @@ public class MyMultiActionController extends MultiActionController {
         modelAndView.setViewName("multi-action-do-second.html");
 
         log.info("Executing MyMultiActionController doSecond Method, request is {}", httpServletRequest.toString());
+
+        return modelAndView;
+    }
+
+    // Parameter pass in
+    // And exception handling
+    public ModelAndView doRegister(HttpServletRequest httpServletRequest,
+                                 HttpServletResponse httpServletResponse,
+                                 String name,
+                                 int age) throws Exception {
+        ModelAndView modelAndView = new ModelAndView();
+
+        if (name == null) {
+            throw new NameException("invalid name");
+        }
+
+        if (age <= 0 || age > 130) {
+            throw new AgeException("invalid age");
+        }
+
+        modelAndView.addObject("name", name);
+        modelAndView.addObject("age", age);
+        modelAndView.setView(new RegisterView());
+
+        log.info("Executing MyMultiActionController register Method, name is {}, age is {}", name, age);
 
         return modelAndView;
     }

@@ -4,5 +4,5 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <!--Register Controller-->
-    <bean id="/my.do" class="pers.xiaoming.javaweb.springmvc.MyController"/>
+    <bean id="/my.do" class="pers.xiaoming.javaweb.springmvc.controller.MyController"/>
 </beans>

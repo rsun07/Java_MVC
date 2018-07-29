@@ -18,15 +18,15 @@
     </bean>
 
     <!--Register Controller-->
-    <bean id="MyController" class="pers.xiaoming.javaweb.springmvc.MyController"/>
+    <bean id="MyController" class="pers.xiaoming.javaweb.springmvc.controller.MyController"/>
 
     <!--Register HandlerMapping-->
     <bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"/>
 
     <!--Register http handler-->
-    <bean id="/httphandler.do" class="pers.xiaoming.javaweb.springmvc.MyHttpHandler"/>
+    <bean id="/httphandler.do" class="pers.xiaoming.javaweb.springmvc.controller.MyHttpHandler"/>
 
-    <bean id="/abstractcontroller.do" class="pers.xiaoming.javaweb.springmvc.MyAbstractControllerImpl">
+    <bean id="/abstractcontroller.do" class="pers.xiaoming.javaweb.springmvc.controller.MyAbstractControllerImpl">
         <!--AbstractController extends WebContentGenerator-->
         <property name="supportedMethods" value="GET"/>
     </bean>
@@ -39,11 +39,16 @@
                 <prop key="/multi_default.do">doFirst</prop>
                 <prop key="/multi_doFirst.do">doFirst</prop>
                 <prop key="/multi_doSecond.do">doSecond</prop>
+                <prop key="/multi_register.do">doRegister</prop>
             </props>
         </property>
     </bean>
 
-    <bean id="MyMultiActionController" class="pers.xiaoming.javaweb.springmvc.MyMultiActionController">
+    <bean id="MyMultiActionController" class="pers.xiaoming.javaweb.springmvc.controller.MyMultiActionController">
         <property name="methodNameResolver" ref="propertiesMethodNameResolver"/>
     </bean>
+
+
+    <!--Register Exception Resolver-->
+    <bean class="pers.xiaoming.javaweb.springmvc.exception.MyExceptionResolver"/>
 </beans>
