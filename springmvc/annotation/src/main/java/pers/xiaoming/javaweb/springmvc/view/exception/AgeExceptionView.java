@@ -1,4 +1,4 @@
-package pers.xiaoming.javaweb.springmvc;
+package pers.xiaoming.javaweb.springmvc.view.exception;
 
 import org.springframework.web.servlet.View;
 
@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.PrintWriter;
 import java.util.Map;
 
-public class RegisterView implements View {
+public class AgeExceptionView implements View {
 
     public String getContentType() {
         return "text/html";
@@ -18,6 +18,8 @@ public class RegisterView implements View {
         Object age = model.get("age");
 
         PrintWriter writer = response.getWriter();
-        writer.printf("Register View executing, name is %s, age is %s", name, age);
+        writer.printf("Age Error executing, name is %s, age is %s", name, age);
+
+        response.setStatus(400);
     }
 }
