@@ -1,0 +1,19 @@
+1. both interceptor pass true
+
+2018-07-30 15:55:11 [http-nio-8080-exec-7] INFO  p.x.j.s.m.InterceptorOne - Executing Interceptor One ------ preHandle() ---
+2018-07-30 15:55:11 [http-nio-8080-exec-7] INFO  p.x.j.s.m.InterceptorTwo - Executing Interceptor Two ------ preHandle() ---
+2018-07-30 15:55:11 [http-nio-8080-exec-7] INFO  p.x.j.s.controller.MyController - Executing MyController
+2018-07-30 15:55:11 [http-nio-8080-exec-7] INFO  p.x.j.s.m.InterceptorTwo - Executing MyInterceptor Two ------ postHandle() ---
+2018-07-30 15:55:11 [http-nio-8080-exec-7] INFO  p.x.j.s.m.InterceptorOne - Executing Interceptor One ------ postHandle() ---
+2018-07-30 15:55:11 [http-nio-8080-exec-7] INFO  p.x.j.s.m.InterceptorTwo - Executing Interceptor Two ------ afterCompletion() ---
+2018-07-30 15:55:11 [http-nio-8080-exec-7] INFO  p.x.j.s.m.InterceptorOne - Executing Interceptor One ------ afterCompletion() ---
+
+2. One true, Two false
+
+2018-07-30 15:56:17 [http-nio-8080-exec-2] INFO  p.x.j.s.m.InterceptorOne - Executing Interceptor One ------ preHandle() ---
+2018-07-30 15:56:17 [http-nio-8080-exec-2] INFO  p.x.j.s.m.InterceptorTwo - Executing Interceptor Two ------ preHandle() ---
+2018-07-30 15:56:17 [http-nio-8080-exec-2] INFO  p.x.j.s.m.InterceptorOne - Executing Interceptor One ------ afterCompletion() ---
+
+3. One false, Two true & both interceptor pass false
+
+2018-07-30 15:56:44 [http-nio-8080-exec-5] INFO  p.x.j.s.m.InterceptorOne - Executing Interceptor One ------ preHandle() ---

@@ -1,4 +1,4 @@
-package pers.xiaoming.javaweb.springmvc.controller.lifecycle;
+package pers.xiaoming.javaweb.springmvc.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.servlet.ModelAndView;

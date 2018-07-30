@@ -1,4 +1,4 @@
-package pers.xiaoming.javaweb.springmvc.controller.lifecycle;
+package pers.xiaoming.javaweb.springmvc.lifecycle;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -8,13 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /*
-2018-07-30 12:41:12 [http-nio-8080-exec-1] INFO  p.x.j.s.c.l.a.MyInterceptorPrefalse - Executing MyInterceptor ------ preHandle() ---
+2018-07-30 12:35:51 [http-nio-8080-exec-6] INFO  p.x.j.s.c.lifecycle.MyInterceptor - Executing MyInterceptor ------ preHandle() ---
+2018-07-30 12:35:51 [http-nio-8080-exec-6] INFO  p.x.j.s.c.lifecycle.MyController - Executing MyController
+2018-07-30 12:35:51 [http-nio-8080-exec-6] INFO  p.x.j.s.c.lifecycle.MyInterceptor - Executing MyInterceptor ------ postHandle() ---
+2018-07-30 12:35:51 [http-nio-8080-exec-6] INFO  p.x.j.s.c.lifecycle.MyInterceptor - Executing MyInterceptor ------ afterCompletion() ---
  */
 @Slf4j
-public class MyInterceptorPrefalse implements HandlerInterceptor {
+public class MyInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         log.info("Executing MyInterceptor ------ preHandle() ---");
-        return false;
+        return true;
     }
 
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {

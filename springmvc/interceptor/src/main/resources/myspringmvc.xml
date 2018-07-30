@@ -7,13 +7,14 @@
     <bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
         <property name="mappings">
             <props>
-                <prop key="/lifecycle/*/*.do">MyConfigController</prop>
+                <prop key="/lifecycle/*/*.do">MyController</prop>
+                <prop key="/multi_interceptor/*.do">MyController</prop>
             </props>
         </property>
     </bean>
 
     <!--Register Controller-->
-    <bean id="MyConfigController" class="pers.xiaoming.javaweb.springmvc.controller.lifecycle.MyController"/>
+    <bean id="MyController" class="pers.xiaoming.javaweb.springmvc.controller.MyController"/>
 
     <!--Register HandlerMapping-->
     <bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"/>
@@ -21,14 +22,28 @@
     <mvc:interceptors>
         <mvc:interceptor>
             <mvc:mapping path="/lifecycle/true/*"/>
-            <bean class="pers.xiaoming.javaweb.springmvc.controller.lifecycle.MyInterceptor"/>
+            <bean class="pers.xiaoming.javaweb.springmvc.lifecycle.MyInterceptor"/>
         </mvc:interceptor>
     </mvc:interceptors>
 
     <mvc:interceptors>
         <mvc:interceptor>
             <mvc:mapping path="/lifecycle/false/*"/>
-            <bean class="pers.xiaoming.javaweb.springmvc.controller.lifecycle.MyInterceptorPrefalse"/>
+            <bean class="pers.xiaoming.javaweb.springmvc.lifecycle.MyInterceptorPrefalse"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/multi_interceptor/*"/>
+            <bean class="pers.xiaoming.javaweb.springmvc.multi_interceptors.InterceptorOne"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/multi_interceptor/*"/>
+            <bean class="pers.xiaoming.javaweb.springmvc.multi_interceptors.InterceptorTwo"/>
         </mvc:interceptor>
     </mvc:interceptors>
 </beans>
