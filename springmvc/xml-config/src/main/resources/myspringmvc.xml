@@ -18,7 +18,7 @@
     </bean>
 
     <!--Register Controller-->
-    <bean id="MyController" class="pers.xiaoming.javaweb.springmvc.controller.MyController"/>
+    <bean id="MyController" class="MyController"/>
 
     <!--Register HandlerMapping-->
     <bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"/>
