@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--Register HandlerMapping-->
+    <bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="mappings">
+            <props>
+                <prop key="/">MyController</prop>
+                <prop key="/controller.do">MyController</prop>
+                <prop key="/mycontroller.do">MyController</prop>
+                <prop key="/simplecontroller.do">MyController</prop>
+            </props>
+        </property>
+    </bean>
+
+    <!--Register Controller-->
+    <bean id="MyController" class="pers.xiaoming.javaweb.springmvc.controller.MyController"/>
+
+    <!--Register HandlerMapping-->
+    <bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"/>
+</beans>

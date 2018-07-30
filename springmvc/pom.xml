@@ -17,6 +17,7 @@
     <module>hello-world</module>
     <module>xml-config</module>
     <module>annotation</module>
+    <module>interceptor</module>
   </modules>
 
   <properties>
