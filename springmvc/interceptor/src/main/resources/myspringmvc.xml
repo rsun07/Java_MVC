@@ -7,7 +7,7 @@
     <bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
         <property name="mappings">
             <props>
-                <prop key="/lifecycle/config/*/*.do">MyConfigController</prop>
+                <prop key="/lifecycle/*/*.do">MyConfigController</prop>
             </props>
         </property>
     </bean>
@@ -20,14 +20,14 @@
 
     <mvc:interceptors>
         <mvc:interceptor>
-            <mvc:mapping path="/lifecycle/config/true/*"/>
+            <mvc:mapping path="/lifecycle/true/*"/>
             <bean class="pers.xiaoming.javaweb.springmvc.controller.lifecycle.MyInterceptor"/>
         </mvc:interceptor>
     </mvc:interceptors>
 
     <mvc:interceptors>
         <mvc:interceptor>
-            <mvc:mapping path="/lifecycle/config/false/*"/>
+            <mvc:mapping path="/lifecycle/false/*"/>
             <bean class="pers.xiaoming.javaweb.springmvc.controller.lifecycle.MyInterceptorPrefalse"/>
         </mvc:interceptor>
     </mvc:interceptors>
