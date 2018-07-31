@@ -3,4 +3,15 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+    <!--Register HandlerMapping-->
+    <bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="mappings">
+            <props>
+                <prop key="/student/*">MyController</prop>
+            </props>
+        </property>
+    </bean>
+
+    <!--Register Controller-->
+    <bean id="MyController" class="pers.xiaoming.javaweb.ssm_xml.controller.StudentController"/>
 </beans>

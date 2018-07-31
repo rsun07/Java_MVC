@@ -10,8 +10,9 @@ public class StudentServiceImpl implements IStudentService {
         this.dao = dao;
     }
 
-    public int createStudent(Student student) {
-        return dao.create(student);
+    public Student createStudent(Student student) {
+        int id = dao.create(student);
+        return student;
     }
 
     public void updateStudent(Student student) {
