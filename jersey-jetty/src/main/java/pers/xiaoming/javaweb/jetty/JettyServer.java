@@ -10,6 +10,10 @@ import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.servlet.ServletContainer;
+import pers.xiaoming.javaweb.jetty.filter.MyFilter;
+
+import javax.servlet.DispatcherType;
+import java.util.EnumSet;
 
 public class JettyServer {
     public static void main(String[] args) throws Exception {
@@ -47,6 +51,8 @@ public class JettyServer {
         servletContextHandler.setContextPath("/");
 
         servletContextHandler.addServlet(servletHolder, "/*");
+
+        servletContextHandler.addFilter(MyFilter.class, "/*", EnumSet.of(DispatcherType.REQUEST));
 
         return servletContextHandler;
     }
