@@ -3,6 +3,18 @@
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
+    
+    <!--Specify Spring config file location-->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:myspring*.xml</param-value>
+    </context-param>
+    
+    <!--Register ServletContext Listener, Creating Spring container-->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+    
     <!--Register Dispatcher Servlet-->
     <servlet>
         <servlet-name>myspringmvc</servlet-name>
@@ -20,6 +32,6 @@
     </servlet-mapping>
 
     <welcome-file-list>
-        <welcome-file>hello-world-springmvc.html</welcome-file>
+        <welcome-file>ssm-welcome.html</welcome-file>
     </welcome-file-list>
 </web-app>
