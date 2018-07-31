@@ -32,6 +32,6 @@
     </servlet-mapping>
 
     <welcome-file-list>
-        <welcome-file>ssm-welcome.html</welcome-file>
+        <welcome-file>student_reg.jsp</welcome-file>
     </welcome-file-list>
 </web-app>

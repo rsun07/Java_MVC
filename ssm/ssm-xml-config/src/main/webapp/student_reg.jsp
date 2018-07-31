@@ -11,7 +11,7 @@
     <title>Student Register</title>
 </head>
 <body>
-    <form action="text/register.do" method="post">
+    <form action="student/create" method="post">
         Name : <input type="text" name="s_name"/> <br>
         Age : <input type="text" name="age"/> <br>
         <input type="submit" value="Register">

@@ -16,6 +16,10 @@ public class StudentController extends MultiActionController {
         this.service = service;
     }
 
+    // Give up here
+    // The config should return ModleAndView for the PropertiesMethodNameResolver to detect the method.
+    // As the xml config implementation is rarely used in industry now
+    // Just refer to the annotation implementation for more detail
     public ResponseEntity<Student> createStudent(HttpServletRequest request,
                                         HttpServletResponse response) {
         String name = request.getParameter("name");
