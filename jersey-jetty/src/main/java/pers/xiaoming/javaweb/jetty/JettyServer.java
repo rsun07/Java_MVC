@@ -10,6 +10,7 @@ import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.servlet.ServletContainer;
+import pers.xiaoming.javaweb.jetty.exception.exceptionmapper.HandledExceptionMapper;
 import pers.xiaoming.javaweb.jetty.filter.MyFilter;
 
 import javax.servlet.DispatcherType;
@@ -38,6 +39,9 @@ public class JettyServer {
         final ResourceConfig resourceConfig = new ResourceConfig();
 
         resourceConfig.packages("pers.xiaoming.javaweb.jetty.api");
+
+        // register exception mapper
+        resourceConfig.register(HandledExceptionMapper.class);
 
         // servlet container is from jersey
         ServletContainer servletContainer = new ServletContainer(resourceConfig);
