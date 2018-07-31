@@ -9,6 +9,7 @@
             <props>
                 <prop key="/lifecycle/*/*.do">MyController</prop>
                 <prop key="/multi_interceptor/*.do">MyController</prop>
+                <prop key="/interceptor_filter/*.do">MyController</prop>
             </props>
         </property>
     </bean>
@@ -44,6 +45,13 @@
         <mvc:interceptor>
             <mvc:mapping path="/multi_interceptor/*"/>
             <bean class="pers.xiaoming.javaweb.springmvc.multi_interceptors.InterceptorTwo"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/interceptor_filter/*"/>
+            <bean class="pers.xiaoming.javaweb.springmvc.interceptor_filter.MyInterceptorCopy"/>
         </mvc:interceptor>
     </mvc:interceptors>
 </beans>

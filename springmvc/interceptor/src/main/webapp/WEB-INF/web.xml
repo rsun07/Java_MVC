@@ -19,6 +19,16 @@
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
+    <filter>
+        <filter-name>MyFilter</filter-name>
+        <filter-class>pers.xiaoming.javaweb.springmvc.interceptor_filter.MyFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>MyFilter</filter-name>
+        <url-pattern>/interceptor_filter/*</url-pattern>
+    </filter-mapping>
+
     <welcome-file-list>
         <welcome-file>springmvc-config.html</welcome-file>
     </welcome-file-list>

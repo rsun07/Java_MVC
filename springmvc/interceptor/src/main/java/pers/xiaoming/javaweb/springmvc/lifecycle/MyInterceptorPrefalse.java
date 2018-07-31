@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /*
-2018-07-30 12:41:12 [http-nio-8080-exec-1] INFO  p.x.j.s.c.l.a.MyInterceptorPrefalse - Executing MyInterceptor ------ preHandle() ---
+INFO  p.x.j.s.c.l.a.MyInterceptorPrefalse - Executing MyInterceptor ------ preHandle() ---
  */
 @Slf4j
 public class MyInterceptorPrefalse implements HandlerInterceptor {
