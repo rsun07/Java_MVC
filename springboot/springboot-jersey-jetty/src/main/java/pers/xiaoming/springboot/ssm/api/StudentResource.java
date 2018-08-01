@@ -29,15 +29,15 @@ public class StudentResource {
     public Response createStudent(Student student) {
         service.createStudent(student);
 
-        return Response.status(Response.Status.CREATED).entity(student.toString()).build();
+        return Response.status(Response.Status.CREATED).entity(student).build();
     }
 
     @GET
-    @Produces({MediaType.TEXT_HTML, MediaType.APPLICATION_JSON})
+    @Produces(MediaType.APPLICATION_JSON)
     public Response getStudent(@QueryParam("id") int id) {
         Student student = service.getStudent(id);
 
-        return Response.ok(student.toString()).build();
+        return Response.ok(student).build();
     }
 
 }

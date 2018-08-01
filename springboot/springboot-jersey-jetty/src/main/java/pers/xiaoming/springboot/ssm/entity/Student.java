@@ -1,8 +1,20 @@
 package pers.xiaoming.springboot.ssm.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
+
 public class Student {
+
+    @JsonProperty
+    @JsonSerialize(using = ToStringSerializer.class)
     private int id;
+
+    @JsonProperty
     private String name;
+
+    @JsonProperty
+    @JsonSerialize(using = ToStringSerializer.class)
     private double score;
 
     public Student() {
