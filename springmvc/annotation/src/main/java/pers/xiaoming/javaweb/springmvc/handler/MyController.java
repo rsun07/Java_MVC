@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 
 @Slf4j
 @Controller
-@RequestMapping("/annotation/")
+@RequestMapping("/pers.xiaoming.springmvc.ssm.annotation/")
 public class MyController extends MyExceptionResolver {
 
     @RequestMapping(value = "/doFirst.do", method = RequestMethod.GET)
@@ -26,7 +26,7 @@ public class MyController extends MyExceptionResolver {
         ModelAndView modelAndView = new ModelAndView();
 
         // 28-Jul-2018 09:47:52.422 WARNING [http-nio-8080-exec-5] org.springframework.web.servlet.PageNotFound.noHandlerFound
-        // No mapping found for HTTP request with URI [/annotation/springmvc-config.html] in DispatcherServlet with name 'dispatcher'
+        // No mapping found for HTTP request with URI [/pers.xiaoming.springmvc.ssm.annotation/springmvc-config.html] in DispatcherServlet with name 'dispatcher'
         // modelAndView.setViewName("springmvc-config.html");
 
         modelAndView.setView(new MyView());

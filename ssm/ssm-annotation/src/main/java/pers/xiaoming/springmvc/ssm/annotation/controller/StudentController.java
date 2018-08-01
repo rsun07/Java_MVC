@@ -1,10 +1,11 @@
-package pers.xiaoming.javaweb.ssm_xml.controller;
+package pers.xiaoming.springmvc.ssm.annotation.controller;
 
+import pers.xiaoming.springmvc.ssm.annotation.entity.Student;
+import pers.xiaoming.springmvc.ssm.annotation.service.IStudentService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
-import pers.xiaoming.javaweb.ssm_xml.entity.Student;
-import pers.xiaoming.javaweb.ssm_xml.service.IStudentService;
+
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -21,7 +22,7 @@ public class StudentController extends MultiActionController {
     // As the xml config implementation is rarely used in industry now
     // Just refer to the pers.xiaoming.springmvc.ssm.annotation implementation for more detail
     public ResponseEntity<Student> createStudent(HttpServletRequest request,
-                                        HttpServletResponse response) {
+                                                 HttpServletResponse response) {
         String name = request.getParameter("name");
         String scoreStr = request.getParameter("score");
         double score = Double.valueOf(scoreStr);
