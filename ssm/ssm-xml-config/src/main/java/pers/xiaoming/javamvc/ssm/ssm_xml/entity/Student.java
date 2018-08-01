@@ -10,6 +10,12 @@ public class Student {
         this.score = score;
     }
 
+    public Student(Integer id, String name, Double score) {
+        this.id = id;
+        this.name = name;
+        this.score = score;
+    }
+
     public void setId(int id) {
         this.id = id;
     }
