@@ -5,7 +5,16 @@ public class Student {
     private String name;
     private double score;
 
+    public Student() {
+    }
+
     public Student(String name, double score) {
+        this.name = name;
+        this.score = score;
+    }
+
+    public Student(int id, String name, double score) {
+        this.id = id;
         this.name = name;
         this.score = score;
     }
