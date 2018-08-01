@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 
 @Slf4j
 @Controller
-@RequestMapping("/pers.xiaoming.springmvc.ssm.annotation/")
+@RequestMapping("/annotation")
 public class MyController extends MyExceptionResolver {
 
     @RequestMapping(value = "/doFirst.do", method = RequestMethod.GET)
