@@ -20,6 +20,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 
 import javax.sql.DataSource;
 import java.beans.PropertyVetoException;
+import java.util.ResourceBundle;
 
 @Configuration
 @ComponentScan("pers.xiaoming.springboot.ssm")
@@ -27,27 +28,30 @@ import java.beans.PropertyVetoException;
 @SpringBootApplication
 public class SpringAppConfig extends SpringBootServletInitializer {
 
+    // This seems to be not working
     // datasource config
-    @Value("${jdbc.driver}")
-    private String driverClass;
-
-    @Value("${jdbc.url}")
-    private String jdbcUrl;
-
-    @Value("${jdbc.user}")
-    private String mysqlUser;
-
-    @Value("${jdbc.password}")
-    private String mysqlPassword;
+//    @Value("${jdbc.driver}")
+//    private String driverClass;
+//
+//    @Value("${jdbc.url}")
+//    private String jdbcUrl;
+//
+//    @Value("${jdbc.user}")
+//    private String mysqlUser;
+//
+//    @Value("${jdbc.password}")
+//    private String mysqlPassword;
 
     @Bean
     @Qualifier("myDataSource")
     public DataSource myDataSource() throws PropertyVetoException {
+        ResourceBundle rb = ResourceBundle.getBundle("jdbc");
+
         HikariDataSource hds = new HikariDataSource();
-        hds.setDriverClassName("com.mysql.jdbc.Driver");
-        hds.setJdbcUrl("jdbc:mysql://127.0.0.1:3306/ssm?useSSL=true");
-        hds.setUsername("root");
-        hds.setPassword("root");
+        hds.setDriverClassName(rb.getString("jdbc.driver"));
+        hds.setJdbcUrl(rb.getString("jdbc.url"));
+        hds.setUsername(rb.getString("jdbc.user"));
+        hds.setPassword(rb.getString("jdbc.password"));
         return hds;
     }
 
@@ -80,12 +84,12 @@ public class SpringAppConfig extends SpringBootServletInitializer {
         return mapperScannerConfigurer;
     }
 
-    // Mybatis transaction manager
-    @Bean
-    @Qualifier("transactionManager")
-    public PlatformTransactionManager setuptxManager(
-            @Qualifier("myDataSource") DataSource myDataSource
-    ) {
-        return new DataSourceTransactionManager(myDataSource);
-    }
+//    // Mybatis transaction manager
+//    @Bean
+//    @Qualifier("transactionManager")
+//    public PlatformTransactionManager setuptxManager(
+//            @Qualifier("myDataSource") DataSource myDataSource
+//    ) {
+//        return new DataSourceTransactionManager(myDataSource);
+//    }
 }
