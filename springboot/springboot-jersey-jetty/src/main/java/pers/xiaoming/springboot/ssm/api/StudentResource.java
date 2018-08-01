@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 import pers.xiaoming.springboot.ssm.entity.Student;
 import pers.xiaoming.springboot.ssm.service.IStudentService;
 
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -32,6 +33,14 @@ public class StudentResource {
         return Response.status(Response.Status.CREATED).entity(student).build();
     }
 
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response updateStudent(Student student) {
+        service.updateStudent(student);
+
+        return Response.status(Response.Status.ACCEPTED).entity(student).build();
+    }
+
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getStudent(@QueryParam("id") int id) {
@@ -40,4 +49,11 @@ public class StudentResource {
         return Response.ok(student).build();
     }
 
+    @DELETE
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response deleteStudent(@QueryParam("id") int id) {
+        service.deleteStudent(id);
+
+        return Response.status(Response.Status.ACCEPTED).build();
+    }
 }
