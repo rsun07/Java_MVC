@@ -2,6 +2,7 @@ package pers.xiaoming.javamvc.ssm.annotation;
 
 import org.springframework.core.annotation.Order;
 import org.springframework.web.WebApplicationInitializer;
+import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
 
@@ -17,13 +18,15 @@ public class MyWebInitializer implements WebApplicationInitializer {
 
         // Create Spring ApplicationContext when ServletContext start
         // Equivalent to "org.springframework.web.context.ContextLoaderListener" in web.xml
-        AnnotationConfigWebApplicationContext ctx = new AnnotationConfigWebApplicationContext();
-        ctx.register(SpringAppConfig.class);
-        ctx.setServletContext(container);
+        AnnotationConfigWebApplicationContext applicationContext = new AnnotationConfigWebApplicationContext();
+        applicationContext.register(SpringAppConfig.class);
+        applicationContext.setServletContext(container);
 
-        ServletRegistration.Dynamic servlet = container.addServlet("dispatcher", new DispatcherServlet(ctx));
+        container.addListener(new ContextLoaderListener(applicationContext));
+
+        ServletRegistration.Dynamic servlet = container.addServlet("dispatcher", new DispatcherServlet(applicationContext));
 
         servlet.setLoadOnStartup(1);
-        servlet.addMapping("/");
+        servlet.addMapping("/*");
     }
 }

@@ -1,16 +1,19 @@
 package pers.xiaoming.javamvc.ssm.annotation.controller;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 import pers.xiaoming.javamvc.ssm.annotation.entity.Student;
 import pers.xiaoming.javamvc.ssm.annotation.service.IStudentService;
 
 @Controller
-@RequestMapping("/student")
+@Slf4j
+@RequestMapping(value = "/student")
 public class StudentController {
     private IStudentService service;
 
@@ -19,7 +22,7 @@ public class StudentController {
         this.service = service;
     }
 
-    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<String> createStudent(String name, double score) {
         Student student = new Student(name, score);
         service.createStudent(student);
@@ -27,7 +30,7 @@ public class StudentController {
         return new ResponseEntity<>(student.toString(), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/update", method = RequestMethod.PUT)
+    @RequestMapping(method = RequestMethod.PUT)
     public ResponseEntity<Void> updateStudent(String name, double score) {
 
         Student student = new Student(name, score);
@@ -36,14 +39,15 @@ public class StudentController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/get", method = RequestMethod.GET)
-    public ResponseEntity<String> getStudent(int id) {
+    @RequestMapping(method = RequestMethod.GET)
+    public ModelAndView getStudent(int id) {
         Student student = service.getStudent(id);
-
-        return new ResponseEntity<>(student.toString(), HttpStatus.OK);
+        log.info(student.toString());
+//        return new ResponseEntity<>(student.toString(), HttpStatus.OK);
+        return null;
     }
 
-    @RequestMapping(value = "/delete", method = RequestMethod.DELETE)
+    @RequestMapping(method = RequestMethod.DELETE)
     public ResponseEntity<Boolean> deleteStudent(int id) {
         boolean del = service.deleteStudent(id);
 

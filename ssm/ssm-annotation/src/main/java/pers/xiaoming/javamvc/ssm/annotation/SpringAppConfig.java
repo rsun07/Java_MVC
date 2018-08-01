@@ -14,11 +14,15 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.handler.SimpleUrlHandlerMapping;
 
 import javax.sql.DataSource;
 import java.beans.PropertyVetoException;
 import java.io.IOException;
+import java.util.Properties;
 import java.util.ResourceBundle;
 
 // this is equivalent to a myspring*.xml doc
@@ -34,7 +38,7 @@ import java.util.ResourceBundle;
 // this is equivalent to "<tx:annotation-driven/>" in myspring-tx.xml
 @EnableTransactionManagement
 
-public class SpringAppConfig {
+public class SpringAppConfig extends WebMvcConfigurerAdapter {
 
     // datasource config
 //    @Value("${jdbc.driver}")
@@ -51,7 +55,7 @@ public class SpringAppConfig {
 
     @Bean
     @Qualifier("myDataSource")
-    public DataSource getDataSource() throws PropertyVetoException {
+    public DataSource myDataSource() throws PropertyVetoException {
         ComboPooledDataSource cpds = new ComboPooledDataSource();
 
         ResourceBundle rb = ResourceBundle.getBundle("jdbc");
@@ -66,7 +70,7 @@ public class SpringAppConfig {
     // following two are spring-mybatis configs
     @Bean
     @Qualifier("sqlSessionFactory")
-    public SqlSessionFactoryBean setupSqlSessionFactoryBean(
+    public SqlSessionFactoryBean sqlSessionFactory(
             @Qualifier("myDataSource") DataSource myDataSource
     ) throws IOException {
         SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
@@ -80,7 +84,7 @@ public class SpringAppConfig {
 
     @Bean
     @Qualifier("sqlSessionFactoryBeanName")
-    public MapperScannerConfigurer setupMapperScannerConfigurer() {
+    public MapperScannerConfigurer sqlSessionFactoryBeanName() {
         MapperScannerConfigurer msc = new MapperScannerConfigurer();
         msc.setSqlSessionFactoryBeanName("sqlSessionFactory");
         msc.setBasePackage("pers.xiaoming.javamvc.ssm.annotation.dao");
@@ -90,9 +94,25 @@ public class SpringAppConfig {
     // Mybatis transaction manager
     @Bean
     @Qualifier("transactionManager")
-    public PlatformTransactionManager setuptxManager(
+    public PlatformTransactionManager transactionManager(
             @Qualifier("myDataSource") DataSource myDataSource
     ) {
         return new DataSourceTransactionManager(myDataSource);
+    }
+
+    @Bean
+    public SimpleUrlHandlerMapping simpleUrlHandlerMapping() {
+        SimpleUrlHandlerMapping mapping = new SimpleUrlHandlerMapping();
+
+        Properties urlProperties = new Properties();
+        urlProperties.put("/student/*", "studentController");
+
+        mapping.setMappings(urlProperties);
+        return mapping;
+    }
+
+    @Override
+    public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
+        configurer.enable();
     }
 }
