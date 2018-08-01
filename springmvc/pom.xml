@@ -16,7 +16,7 @@
   <modules>
     <module>hello-world</module>
     <module>xml-config</module>
-    <module>pers.xiaoming.springmvc.ssm.annotation</module>
+    <module>annotation</module>
     <module>interceptor</module>
   </modules>
 
