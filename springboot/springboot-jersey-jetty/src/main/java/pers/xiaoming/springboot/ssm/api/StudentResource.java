@@ -3,11 +3,13 @@ package pers.xiaoming.springboot.ssm.api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import pers.xiaoming.springboot.ssm.entity.Student;
+import pers.xiaoming.springboot.ssm.exception.BadRequestException;
 import pers.xiaoming.springboot.ssm.service.IStudentService;
 
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
@@ -33,7 +35,7 @@ public class StudentResource {
         return Response.status(Response.Status.CREATED).entity(student).build();
     }
 
-    @POST
+    @PUT
     @Produces(MediaType.APPLICATION_JSON)
     public Response updateStudent(Student student) {
         service.updateStudent(student);
@@ -45,6 +47,10 @@ public class StudentResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response getStudent(@QueryParam("id") int id) {
         Student student = service.getStudent(id);
+
+        if (student == null) {
+            throw new BadRequestException("Student Not Found!");
+        }
 
         return Response.ok(student).build();
     }
