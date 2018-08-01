@@ -21,7 +21,7 @@
 
     <filter>
         <filter-name>MyFilter</filter-name>
-        <filter-class>pers.xiaoming.javaweb.springmvc.interceptor_filter.MyFilter</filter-class>
+        <filter-class>pers.xiaoming.javamvc.springmvc.interceptor_filter.MyFilter</filter-class>
     </filter>
 
     <filter-mapping>

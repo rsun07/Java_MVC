@@ -24,9 +24,9 @@
     <bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"/>
 
     <!--Register http handler-->
-    <bean id="/httphandler.do" class="pers.xiaoming.javaweb.springmvc.controller.MyHttpHandler"/>
+    <bean id="/httphandler.do" class="pers.xiaoming.javamvc.springmvc.controller.MyHttpHandler"/>
 
-    <bean id="/abstractcontroller.do" class="pers.xiaoming.javaweb.springmvc.controller.MyAbstractControllerImpl">
+    <bean id="/abstractcontroller.do" class="pers.xiaoming.javamvc.springmvc.controller.MyAbstractControllerImpl">
         <!--AbstractController extends WebContentGenerator-->
         <property name="supportedMethods" value="GET"/>
     </bean>
@@ -44,11 +44,11 @@
         </property>
     </bean>
 
-    <bean id="MyMultiActionController" class="pers.xiaoming.javaweb.springmvc.controller.MyMultiActionController">
+    <bean id="MyMultiActionController" class="pers.xiaoming.javamvc.springmvc.controller.MyMultiActionController">
         <property name="methodNameResolver" ref="propertiesMethodNameResolver"/>
     </bean>
 
 
     <!--Register Exception Resolver-->
-    <bean class="pers.xiaoming.javaweb.springmvc.exception.MyExceptionResolver"/>
+    <bean class="MyExceptionResolver"/>
 </beans>

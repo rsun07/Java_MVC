@@ -14,6 +14,6 @@
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
         <!--Specify the location of dao interfaces-->
-        <property name="basePackage" value="pers.xiaoming.javaweb.ssm_xml.dao"/>
+        <property name="basePackage" value="pers.xiaoming.javamvc.ssm.ssm_xml.dao"/>
     </bean>
 </beans>

@@ -15,7 +15,7 @@
     </bean>
 
     <!--Register Controller-->
-    <bean id="MyController" class="pers.xiaoming.javaweb.springmvc.controller.MyController"/>
+    <bean id="MyController" class="MyController"/>
 
     <!--Register HandlerMapping-->
     <bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"/>
@@ -23,35 +23,35 @@
     <mvc:interceptors>
         <mvc:interceptor>
             <mvc:mapping path="/lifecycle/true/*"/>
-            <bean class="pers.xiaoming.javaweb.springmvc.lifecycle.MyInterceptor"/>
+            <bean class="pers.xiaoming.javamvc.springmvc.lifecycle.MyInterceptor"/>
         </mvc:interceptor>
     </mvc:interceptors>
 
     <mvc:interceptors>
         <mvc:interceptor>
             <mvc:mapping path="/lifecycle/false/*"/>
-            <bean class="pers.xiaoming.javaweb.springmvc.lifecycle.MyInterceptorPrefalse"/>
+            <bean class="pers.xiaoming.javamvc.springmvc.lifecycle.MyInterceptorPrefalse"/>
         </mvc:interceptor>
     </mvc:interceptors>
 
     <mvc:interceptors>
         <mvc:interceptor>
             <mvc:mapping path="/multi_interceptor/*"/>
-            <bean class="pers.xiaoming.javaweb.springmvc.multi_interceptors.InterceptorOne"/>
+            <bean class="pers.xiaoming.javamvc.springmvc.multi_interceptors.InterceptorOne"/>
         </mvc:interceptor>
     </mvc:interceptors>
 
     <mvc:interceptors>
         <mvc:interceptor>
             <mvc:mapping path="/multi_interceptor/*"/>
-            <bean class="pers.xiaoming.javaweb.springmvc.multi_interceptors.InterceptorTwo"/>
+            <bean class="pers.xiaoming.javamvc.springmvc.multi_interceptors.InterceptorTwo"/>
         </mvc:interceptor>
     </mvc:interceptors>
 
     <mvc:interceptors>
         <mvc:interceptor>
             <mvc:mapping path="/interceptor_filter/*"/>
-            <bean class="pers.xiaoming.javaweb.springmvc.interceptor_filter.MyInterceptorCopy"/>
+            <bean class="pers.xiaoming.javamvc.springmvc.interceptor_filter.MyInterceptorCopy"/>
         </mvc:interceptor>
     </mvc:interceptors>
 </beans>

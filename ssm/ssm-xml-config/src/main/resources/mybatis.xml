@@ -4,10 +4,10 @@
 
 <configuration>
     <typeAliases>
-        <package name="pers.xiaoming.javaweb.ssm_xml.entity"/>
+        <package name="pers.xiaoming.javamvc.ssm.ssm_xml.entity"/>
     </typeAliases>
 
     <mappers>
-        <package name="pers.xiaoming.javaweb.ssm_xml.dao"/>
+        <mapper resource="student.xml"/>
     </mappers>
 </configuration>

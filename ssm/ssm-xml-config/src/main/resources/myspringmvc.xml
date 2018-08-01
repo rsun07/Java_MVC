@@ -7,7 +7,7 @@
     <bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
         <property name="mappings">
             <props>
-                <prop key="/student/*.do">studentController</prop>
+                <prop key="/student/*">studentController</prop>
             </props>
         </property>
     </bean>
@@ -17,15 +17,16 @@
           class="org.springframework.web.servlet.mvc.multiaction.PropertiesMethodNameResolver">
         <property name="mappings">
             <props>
-                <prop key="/student/create.do">createStudent</prop>
-                <prop key="/student/update.do">updateStudent</prop>
-                <prop key="/student/get.do">getStudent</prop>
-                <prop key="/student/delete.do">deleteStudent</prop>
+                <prop key="/student/create">createStudent</prop>
+                <prop key="/student/update">updateStudent</prop>
+                <prop key="/student/get">getStudent</prop>
+                <prop key="/student/delete">deleteStudent</prop>
             </props>
         </property>
     </bean>
 
-    <bean id="studentController" class="pers.xiaoming.javaweb.ssm_xml.controller.StudentController">
+    <bean id="studentController" class="pers.xiaoming.javamvc.ssm.ssm_xml.controller.StudentController">
         <property name="methodNameResolver" ref="propertiesMethodNameResolver"/>
+        <property name="service" ref="studentService"/>
     </bean>
 </beans>
