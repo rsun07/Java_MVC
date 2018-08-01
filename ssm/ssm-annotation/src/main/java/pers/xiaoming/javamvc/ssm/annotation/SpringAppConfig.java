@@ -27,7 +27,7 @@ import java.io.IOException;
 @ComponentScan("pers.xiaoming.javamvc.ssm.annotation")
 
 // this is equivalent to "<context:property-placeholder location="classpath:jdbc.properties"/>" in myspring-db.xml
-@PropertySource(value="classpath:jdbc.properties")
+@PropertySource(value="classpath:jdbc.properties", ignoreResourceNotFound = true)
 
 // this is equivalent to "<tx:annotation-driven/>" in myspring-tx.xml
 @EnableTransactionManagement

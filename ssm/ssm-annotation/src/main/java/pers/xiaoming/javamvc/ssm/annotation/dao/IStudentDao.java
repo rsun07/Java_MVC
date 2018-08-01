@@ -1,7 +1,9 @@
 package pers.xiaoming.javamvc.ssm.annotation.dao;
 
+import org.springframework.stereotype.Repository;
 import pers.xiaoming.javamvc.ssm.annotation.entity.Student;
 
+@Repository("IStudentDao")
 public interface IStudentDao {
     int create(Student student);
 
