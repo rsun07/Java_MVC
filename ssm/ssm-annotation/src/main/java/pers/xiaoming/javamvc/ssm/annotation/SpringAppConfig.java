@@ -20,6 +20,7 @@ import javax.sql.DataSource;
 import java.beans.PropertyVetoException;
 import java.io.IOException;
 
+// this is equivalent to a myspring*.xml doc
 @Configuration
 
 @EnableWebMvc

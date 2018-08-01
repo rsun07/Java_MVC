@@ -9,7 +9,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @SpringBootApplication
+
+// could be replaced by @SpringBootConfiguration
 @Configuration
+
 public class HelloApplication {
 
     @RequestMapping("/hello")
