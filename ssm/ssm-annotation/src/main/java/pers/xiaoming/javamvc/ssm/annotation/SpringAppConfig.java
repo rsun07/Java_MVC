@@ -19,6 +19,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import javax.sql.DataSource;
 import java.beans.PropertyVetoException;
 import java.io.IOException;
+import java.util.ResourceBundle;
 
 // this is equivalent to a myspring*.xml doc
 @Configuration
@@ -36,26 +37,29 @@ import java.io.IOException;
 public class SpringAppConfig {
 
     // datasource config
-    @Value("${jdbc.driver}")
-    private String driverClass;
-
-    @Value("${jdbc.url}")
-    private String jdbcUrl;
-
-    @Value("${jdbc.user}")
-    private String mysqlUser;
-
-    @Value("${jdbc.password}")
-    private String mysqlPassword;
+//    @Value("${jdbc.driver}")
+//    private String driverClass;
+//
+//    @Value("${jdbc.url}")
+//    private String jdbcUrl;
+//
+//    @Value("${jdbc.user}")
+//    private String mysqlUser;
+//
+//    @Value("${jdbc.password}")
+//    private String mysqlPassword;
 
     @Bean
     @Qualifier("myDataSource")
     public DataSource getDataSource() throws PropertyVetoException {
         ComboPooledDataSource cpds = new ComboPooledDataSource();
-        cpds.setDriverClass(this.driverClass);
-        cpds.setJdbcUrl(this.jdbcUrl);
-        cpds.setUser(this.mysqlUser);
-        cpds.setPassword(this.mysqlPassword);
+
+        ResourceBundle rb = ResourceBundle.getBundle("jdbc");
+
+        cpds.setDriverClass(rb.getString("jdbc.driver"));
+        cpds.setJdbcUrl(rb.getString("jdbc.url"));
+        cpds.setUser(rb.getString("jdbc.user"));
+        cpds.setPassword(rb.getString("jdbc.password"));
         return cpds;
     }
 
