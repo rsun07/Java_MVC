@@ -9,4 +9,13 @@ public class Student {
         this.name = name;
         this.score = score;
     }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", score=" + score +
+                '}';
+    }
 }

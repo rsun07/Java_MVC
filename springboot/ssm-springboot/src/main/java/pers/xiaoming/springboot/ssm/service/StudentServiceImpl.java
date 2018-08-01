@@ -16,23 +16,19 @@ public class StudentServiceImpl implements IStudentService {
         this.dao = dao;
     }
 
-    @Transactional
     public Student createStudent(Student student) {
         int id = dao.create(student);
         return student;
     }
 
-    @Transactional
     public void updateStudent(Student student) {
         dao.update(student);
     }
 
-    @Transactional
     public Student getStudent(int id) {
         return dao.get(id);
     }
 
-    @Transactional
     public boolean deleteStudent(int id) {
         dao.delete(id);
         return true;
