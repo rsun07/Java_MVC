@@ -13,4 +13,13 @@ public class Student {
     public void setId(int id) {
         this.id = id;
     }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", score=" + score +
+                '}';
+    }
 }

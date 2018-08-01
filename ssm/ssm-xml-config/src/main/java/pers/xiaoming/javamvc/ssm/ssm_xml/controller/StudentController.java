@@ -9,6 +9,7 @@ import pers.xiaoming.javamvc.ssm.ssm_xml.service.IStudentService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 public class StudentController extends MultiActionController {
     private IStudentService service;
@@ -17,12 +18,8 @@ public class StudentController extends MultiActionController {
         this.service = service;
     }
 
-    // Give up here
-    // The config should return ModleAndView for the PropertiesMethodNameResolver to detect the method.
-    // As the xml config implementation is rarely used in industry now
-    // Just refer to the pers.xiaoming.springmvc.ssm.annotation implementation for more detail
     public ModelAndView createStudent(HttpServletRequest request,
-                                      HttpServletResponse response) {
+                                      HttpServletResponse response) throws IOException {
         String name = request.getParameter("name");
         String scoreStr = request.getParameter("score");
         double score = Double.valueOf(scoreStr);
@@ -30,10 +27,11 @@ public class StudentController extends MultiActionController {
         Student student = new Student(name, score);
         service.createStudent(student);
 
-        return new ModelAndView(student.toString());
+        response.getWriter().printf(student.toString());
+        return null;
     }
 
-    public ResponseEntity<Void> updateStudent(HttpServletRequest request,
+    public ModelAndView updateStudent(HttpServletRequest request,
                                                  HttpServletResponse response) {
         String name = request.getParameter("name");
         String scoreStr = request.getParameter("score");
@@ -42,26 +40,28 @@ public class StudentController extends MultiActionController {
         Student student = new Student(name, score);
         service.updateStudent(student);
 
-        return new ResponseEntity<Void>(HttpStatus.OK);
+        return null;
     }
 
-    public ResponseEntity<Student> getStudent(HttpServletRequest request,
-                                                 HttpServletResponse response) {
+    public ModelAndView getStudent(HttpServletRequest request,
+                                                 HttpServletResponse response) throws IOException {
         String idStr = request.getParameter("id");
         int id = Integer.valueOf(idStr);
 
         Student student = service.getStudent(id);
 
-        return new ResponseEntity<Student>(student, HttpStatus.OK);
+        response.getWriter().printf(student.toString());
+        return null;
     }
 
-    public ResponseEntity<Boolean> deleteStudent(HttpServletRequest request,
-                                                 HttpServletResponse response) {
+    public ModelAndView deleteStudent(HttpServletRequest request,
+                                                 HttpServletResponse response) throws IOException {
         String idStr = request.getParameter("id");
         int id = Integer.valueOf(idStr);
 
         boolean del = service.deleteStudent(id);
 
-        return new ResponseEntity<Boolean>(del, HttpStatus.OK);
+        response.getWriter().printf(String.valueOf(del));
+        return null;
     }
 }
