@@ -18,7 +18,7 @@ import java.io.IOException;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan("pers.xiaoming.springmvc.ssm.annotation")
+@ComponentScan("pers.xiaoming.javamvc.ssm.annotation")
 @PropertySource(value="classpath:jdbc.properties")
 public class SpringAppConfig {
 

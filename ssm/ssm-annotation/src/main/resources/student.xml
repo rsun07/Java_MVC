@@ -3,7 +3,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!--Here should be the interface path-->
-<mapper namespace="IStudentDao">
+<mapper namespace="pers.xiaoming.javamvc.ssm.annotation.dao.IStudentDao">
 
     <!--System will read the Class name from the typeAliases and use the Class name as Alias-->
     <!--<insert id="insertStudent" parameterType="Student">-->
@@ -35,7 +35,7 @@
         select t_id id,t_name name,t_score score from t_student where t_id=#{id}
     </select>
 
-    <resultMap id="StudentMapper" type="Student">
+    <resultMap id="StudentMapper" type="pers.xiaoming.javamvc.ssm.annotation.entity.Student">
         <id column="t_id" property="id"/>
         <result column="t_name" property="name"/>
         <result column="t_score" property="score"/>

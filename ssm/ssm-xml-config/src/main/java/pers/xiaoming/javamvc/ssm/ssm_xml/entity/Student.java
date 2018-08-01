@@ -9,4 +9,8 @@ public class Student {
         this.name = name;
         this.score = score;
     }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 }

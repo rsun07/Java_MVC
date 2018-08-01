@@ -9,8 +9,9 @@
         </layout>
     </appender>
 
-    <logger name="pers.xiaoming.javaweb" level="INFO"/>
-    <logger name="org.eclipse.jetty" level="ERROR"/>
+    <logger name="pers.xiaoming.javamvc.ssm.annotation" level="INFO"/>
+    <logger name="org.springframework" level="ERROR"/>
+    <logger name="org.mybatis" level="ERROR"/>
 
     <root level="INFO">
         <appender-ref ref="STDOUT" />
