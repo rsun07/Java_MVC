@@ -19,7 +19,7 @@ public class StudentController {
         this.service = service;
     }
 
-    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<String> createStudent(String name, double score) {
         Student student = new Student(name, score);
         service.createStudent(student);
@@ -27,7 +27,7 @@ public class StudentController {
         return new ResponseEntity<>(student.toString(), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/update", method = RequestMethod.PUT)
+    @RequestMapping(method = RequestMethod.PUT)
     public ResponseEntity<Void> updateStudent(String name, double score) {
 
         Student student = new Student(name, score);
@@ -36,14 +36,14 @@ public class StudentController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/get", method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<String> getStudent(int id) {
         Student student = service.getStudent(id);
 
         return new ResponseEntity<>(student.toString(), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/delete", method = RequestMethod.DELETE)
+    @RequestMapping(method = RequestMethod.DELETE)
     public ResponseEntity<Boolean> deleteStudent(int id) {
         boolean del = service.deleteStudent(id);
 
