@@ -11,15 +11,27 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
+import javax.sql.DataSource;
 import java.beans.PropertyVetoException;
 import java.io.IOException;
 
 @Configuration
+
 @EnableWebMvc
+
 @ComponentScan("pers.xiaoming.javamvc.ssm.annotation")
+
+// this is equivalent to "<context:property-placeholder location="classpath:jdbc.properties"/>" in myspring-db.xml
 @PropertySource(value="classpath:jdbc.properties")
+
+// this is equivalent to "<tx:annotation-driven/>" in myspring-tx.xml
+@EnableTransactionManagement
+
 public class SpringAppConfig {
 
     // datasource config
@@ -37,7 +49,7 @@ public class SpringAppConfig {
 
     @Bean
     @Qualifier("myDataSource")
-    public ComboPooledDataSource getDataSource() throws PropertyVetoException {
+    public DataSource getDataSource() throws PropertyVetoException {
         ComboPooledDataSource cpds = new ComboPooledDataSource();
         cpds.setDriverClass(this.driverClass);
         cpds.setJdbcUrl(this.jdbcUrl);
@@ -50,7 +62,7 @@ public class SpringAppConfig {
     @Bean
     @Qualifier("sqlSessionFactory")
     public SqlSessionFactoryBean setupSqlSessionFactoryBean(
-            @Qualifier("myDataSource") ComboPooledDataSource myDataSource
+            @Qualifier("myDataSource") DataSource myDataSource
     ) throws IOException {
         SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
         sqlSessionFactoryBean.setDataSource(myDataSource);
@@ -68,5 +80,14 @@ public class SpringAppConfig {
         msc.setSqlSessionFactoryBeanName("sqlSessionFactory");
         msc.setBasePackage("pers.xiaoming.javamvc.ssm.annotation.dao");
         return msc;
+    }
+
+    // Mybatis transaction manager
+    @Bean
+    @Qualifier("transactionManager")
+    public PlatformTransactionManager setuptxManager(
+            @Qualifier("myDataSource") DataSource myDataSource
+    ) {
+        return new DataSourceTransactionManager(myDataSource);
     }
 }
