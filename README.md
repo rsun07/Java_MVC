@@ -9,4 +9,4 @@ Step by step to set up java web services using different technologies
 --- annotation solution   
 - Springboot   
 --- Springboot using ssm framwork   
---- SPringboot using jersey jetty and mybatis   
+--- Springboot using jersey jetty and mybatis   
