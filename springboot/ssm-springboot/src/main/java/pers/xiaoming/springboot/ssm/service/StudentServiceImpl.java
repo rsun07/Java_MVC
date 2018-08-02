@@ -2,7 +2,6 @@ package pers.xiaoming.springboot.ssm.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import pers.xiaoming.springboot.ssm.dao.IStudentDao;
 import pers.xiaoming.springboot.ssm.entity.Student;
 

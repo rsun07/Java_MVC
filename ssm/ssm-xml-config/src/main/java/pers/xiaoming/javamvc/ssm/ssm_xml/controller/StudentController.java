@@ -1,7 +1,5 @@
 package pers.xiaoming.javamvc.ssm.ssm_xml.controller;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
 import pers.xiaoming.javamvc.ssm.ssm_xml.entity.Student;

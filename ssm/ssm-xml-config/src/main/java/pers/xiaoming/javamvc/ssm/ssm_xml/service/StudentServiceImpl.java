@@ -1,7 +1,7 @@
 package pers.xiaoming.javamvc.ssm.ssm_xml.service;
 
-import pers.xiaoming.javamvc.ssm.ssm_xml.entity.Student;
 import pers.xiaoming.javamvc.ssm.ssm_xml.dao.IStudentDao;
+import pers.xiaoming.javamvc.ssm.ssm_xml.entity.Student;
 
 public class StudentServiceImpl implements IStudentService {
     private IStudentDao dao;

@@ -3,8 +3,8 @@ package pers.xiaoming.javamvc.ssm.annotation.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import pers.xiaoming.javamvc.ssm.annotation.entity.Student;
 import pers.xiaoming.javamvc.ssm.annotation.dao.IStudentDao;
+import pers.xiaoming.javamvc.ssm.annotation.entity.Student;
 
 @Service("studentService")
 public class StudentServiceImpl implements IStudentService {
