@@ -10,6 +10,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import pers.xiaoming.springboot.ssm.entity.Student;
 import pers.xiaoming.springboot.ssm.service.IStudentService;
 
+// Sometimes, test may not share resources folder with the main dir
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class StudentServiceTest {
