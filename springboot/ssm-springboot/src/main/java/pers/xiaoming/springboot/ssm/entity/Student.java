@@ -25,6 +25,10 @@ public class Student {
         return id;
     }
 
+    public void setScore(double score) {
+        this.score = score;
+    }
+
     @Override
     public String toString() {
         return "Student{" +

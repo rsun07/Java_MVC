@@ -27,9 +27,18 @@ public class StudentServiceTest {
     public void testCURD() {
         service.createStudent(student);
         int id = student.getId();
+        testGet(student, id);
 
-        Student studentGetFromDB = service.getStudent(id);
+        student.setScore(99);
+        service.updateStudent(student);
+        testGet(student, id);
 
-        Assert.assertEquals(student, studentGetFromDB);
+        service.deleteStudent(id);
+        testGet(null, id);
+    }
+
+    private void testGet(Student expect, int id) {
+        Student actual = service.getStudent(id);
+        Assert.assertEquals(expect, actual);
     }
 }
