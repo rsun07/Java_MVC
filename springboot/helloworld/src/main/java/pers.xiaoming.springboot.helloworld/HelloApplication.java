@@ -8,10 +8,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-@SpringBootApplication
+@SpringBootApplication // same as @Configuration @EnableAutoConfiguration @ComponentScan
 
 // could be replaced by @SpringBootConfiguration
-@Configuration
+// Already included in @SpringBootApplication
+// @Configuration
 
 public class HelloApplication {
 

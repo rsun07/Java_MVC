@@ -20,16 +20,16 @@ import javax.sql.DataSource;
 import java.beans.PropertyVetoException;
 import java.util.ResourceBundle;
 
-@Configuration
-@ComponentScan("pers.xiaoming.springboot.ssm")
+// @Configuration
+// @ComponentScan("pers.xiaoming.springboot.ssm")
 @PropertySource(value="classpath:jdbc.properties")
-@SpringBootApplication
+@SpringBootApplication // same as @Configuration @EnableAutoConfiguration @ComponentScan
 public class Application extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }
-    
+
     // This seems to be not working
     // datasource config
 //    @Value("${jdbc.driver}")
