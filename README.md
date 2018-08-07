@@ -7,6 +7,3 @@ Step by step to set up java web services using different technologies
 - ssm (Spring, Spring MVC, Mybatis)  
 --- configuration solution using xml config to develop   
 --- annotation solution   
-- Springboot   
---- Springboot using ssm framwork   
---- Springboot using jersey jetty and mybatis   
