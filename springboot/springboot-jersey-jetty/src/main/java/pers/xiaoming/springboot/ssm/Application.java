@@ -4,6 +4,7 @@ import com.zaxxer.hikari.HikariDataSource;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.mapper.MapperScannerConfigurer;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
@@ -23,7 +24,12 @@ import java.util.ResourceBundle;
 @ComponentScan("pers.xiaoming.springboot.ssm")
 @PropertySource(value="classpath:jdbc.properties")
 @SpringBootApplication
-public class SpringAppConfig extends SpringBootServletInitializer {
+public class Application extends SpringBootServletInitializer {
+
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class, args);
+    }
+
 
     // This seems to be not working
     // datasource config
@@ -54,7 +60,7 @@ public class SpringAppConfig extends SpringBootServletInitializer {
 
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
-        return builder.sources(SpringAppConfig.class);
+        return builder.sources(Application.class);
     }
 
     // following two are spring-mybatis configs
